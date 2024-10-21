@@ -1,0 +1,64 @@
+@keyframes logo {
+    0% {
+        width: 25px; opacity: 0;
+    }
+    100% {
+        width: 475px; opacity: 1;
+    }
+}
+
+#logo{
+    animation-duration: 5s;
+    animation-delay: 10s;
+}
+
+body{
+    font-family: "Poppins", serif;
+    background-color: #f1f1f1;
+    background-image: url("../images/concrete_seamless.png");
+}
+
+header{
+    display: flex;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.nav_links{
+    display: flex;
+}
+
+h3{
+    background-color: #288088;
+}
+
+div.card{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    display: flex;
+    
+}
+
+div.card:nth-child(h4){
+    background-color: #288088;
+    border: 2px solid #45ADAD;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#image1, #image2, #image3, #image4, #image5{
+    border: 10px solid #50C7C7;
+    margin: 10px 10px 10px 10px;
+    width: 300px;
+}
+
+
+
+
+@media screen and (min-width: 900px) {
+    header{
+        display: flex;
+    }
+}
