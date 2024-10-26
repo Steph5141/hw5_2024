@@ -1,3 +1,5 @@
+/* Set the animation of the logo */
+
 @keyframes logo {
     0% {
         width: 25px; opacity: 0;
@@ -13,6 +15,7 @@
     animation-delay: 10ms;
 }
 
+/* Set prefers reduced motion */
 @media screen and (prefers-reduced-motion) {
     #logo{
         animation: none;
@@ -21,10 +24,12 @@
     }
 }
 
+/*Update the body, header, and nav_links to look like screenshot through flex */
 body{
     font-family: "Poppins", serif;
     background-color: #f1f1f1;
     background-image: url("../images/concrete_seamless.png");
+    text-align: left;
 }
 
 header{
@@ -36,56 +41,132 @@ header{
 .nav_links{
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-div.card > header{
+/* Update the header direct child of .card */
+
+.card > header{
     background-color: #288088;
+    border: 2px solid #45ADAD;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    width: auto;
+}
+
+/* Update the flex for the pricing and card divs */
+/* I can not figure out how I broke the width of card1 and card3 or the width of the header in all 3 cards or how to fix it */
+
+div.pricing{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 450px;
+    align-items: center;
 }
 
 div.card{
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: 450px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
-div.pricing{
+/* Using flex to style the gallery and adding a border to each image */
+
+div.gallery{
     display: flex;
-    flex-direction: column;
-    flex-basis: 450px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-#image{
+#image1, #image2, #image3, #image4, #image5{
     border: 10px solid #50C7C7;
     margin: 10px 10px 10px 10px;
     width: 300px;
+    align-self: stretch;
 }
 
-#gallery{
-    display: flex;
-}
-
-
-
-
-
+/* First media screen for 900px, changing the header and nav to match image */
 @media screen and (min-width: 900px) {
     header{
         display: flex;
-        
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .nav_links{
-        display:flex;
+        flex-direction: row;
     }
-
+/* Using flex to change layout of pricing div, I added padding to be more accurate to the picture */
     div.pricing{
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0px 100px 0px 100px;
+    }
+
+    div.card:nth-child(1n){
+        flex-basis: 275px;
+        align-self: stretch;
+    }
+/* I changed the margin so the second card would be taller than the first and third */
+    div.card:nth-child(2){
+        margin: 0px 0px 0px 0px;
+    }
+/* Changing the layout of the gallery to match the image */
+    div.gallery{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/*Finally ready to do the media print screen */
+
+@media print{
+    body{
+        font-family: Arial, Helvetica;
+        background-color: #f1f1f1;
+        background-image: none;
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+    }
+/* I have no idea how to change the nav to look like the image despite trying multiple different forms of this */
+    header:nth-child(nav){
+        display: flex;
+        flex-direction: row;
+    }
+
+/* These two div.card: nth-child lines are to specifically change the way the second card is sized to match the other two and to add a border */
+    div.card:nth-child(2){
+        padding-bottom: 25px;
+        margin: 12px 12px 12px 12px;
+    }
+
+    div.card:nth-child(1n){
+        flex-basis: 325px;
+        border: 2px solid #45ADDD;
+    }
+
+    /* Changing the layout of the pricing div to match the pictures */
+    div.pricing{
+        display: flex;
+        flex-direction: row;
+        padding: 0px 0px 0px 0px;
+        flex-basis: 325px;
+        align-content: flex-end;
+    }
+/* Getting rid of the gallery, display none was not working by itself so I added visability hidden */
+    h2#gallery{
+        display: none;
+        visibility: hidden;
+    }
+    div.gallery{
+        display: none;
+        visibility: hidden;
     }
 }
